@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+// set view engine
+app.set("view engine", "ejs")
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -9,9 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 const jwt = require("jsonwebtoken")
 
 app.get("/", (req, res) => {
-    res.status(200).json({
-        message: "Welcome to the Home Page hello hi"
-    })
+    res.render("index")
 })
 
 app.get("/about", (req, res) => {
